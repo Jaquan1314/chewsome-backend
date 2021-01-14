@@ -19,7 +19,7 @@ class Api::UsersController < ApplicationController
     if user.valid?
       render json: user
     else
-      render json: { error: 'failed to create user'}
+      render json: { error: 'failed to create user' }
     end
   end
 
