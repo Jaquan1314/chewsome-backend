@@ -5,10 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 Favorite.destroy_all
 Review.destroy_all
 Restaurant.destroy_all
 User.destroy_all
+
+puts 'creating Restaurants'
+10.times do
+  Restaurant.create!(
+    name: Faker::Restaurant.unique.name,
+    "url": '',
+    "image_url": Faker::Avatar.image,
+    "location": Faker::Address.street_address,
+    "rating": '',
+    "coordinates": '',
+    "photos": '',
+    "phone": Faker::PhoneNumber.cell_phone
+  )
+end
+
+
 
 puts 'creating users 👨‍👩‍👧‍👦 '
 

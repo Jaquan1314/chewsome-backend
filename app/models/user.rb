@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :stores, through: :favorites, class_name: :Restaurant
+
+  has_secure_password
 end

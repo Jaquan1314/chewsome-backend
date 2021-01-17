@@ -5,6 +5,14 @@ ruby '2.6.1'
 
 # Serializer
 gem 'active_model_serializers'
+# Figaro
+gem 'figaro'
+# Rest-Client
+gem 'rest-client'
+# HTTP
+gem 'http'
+# Faker
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
