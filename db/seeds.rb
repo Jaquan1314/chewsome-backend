@@ -12,21 +12,28 @@ Review.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-# puts 'creating Restaurants'
-# 10.times do
-#   Restaurant.create!(
-#     name: Faker::Restaurant.unique.name,
-#     "url": '',
-#     "image_url": Faker::Avatar.image,
-#     "location": Faker::Address.street_address,
-#     "rating": '',
-#     "coordinates": '',
-#     "photos": '',
-#     "phone": Faker::PhoneNumber.cell_phone
-#   )
-# end
+response = RestClient::Request.execute(
+  method: "GET",
+  url: "https://api.yelp.com/v3/businesses/search?term=delis&location=nyc&sort_by=rating",
+  headers: { Authorization: "Bearer #{ENV['YELP_API_KEY']}" },
+)
+parse_resp = JSON.parse(response)
+restaurants = parse_resp['businesses']
 
+restaurants.each do |restaurant|
+  Restaurant.create!(
+    name: restaurant['name'],
+    url: restaurant['url'],
+    image_url: restaurant['image_url'],
+    location: restaurant['location']['address1'],
+    rating: restaurant['rating'],
+    coordinates: restaurant['coordinates'].to_s,
+    photos: '',
+    phone: restaurant['display_phone'],
+  )
+end
 
+# byebug
 
 puts 'creating users 👨‍👩‍👧‍👦 '
 
