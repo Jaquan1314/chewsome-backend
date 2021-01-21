@@ -20,19 +20,6 @@ response = RestClient::Request.execute(
 parse_resp = JSON.parse(response)
 restaurants = parse_resp['businesses']
 
-restaurants.each do |restaurant|
-  Restaurant.create!(
-    name: restaurant['name'],
-    url: restaurant['url'],
-    image_url: restaurant['image_url'],
-    location: restaurant['location']['address1'],
-    rating: restaurant['rating'],
-    coordinates: restaurant['coordinates'].to_s,
-    photos: '',
-    phone: restaurant['display_phone'],
-  )
-end
-
 # byebug
 
 puts 'creating users 👨‍👩‍👧‍👦 '
@@ -59,3 +46,27 @@ user_arr = [
 user_arr.each do |uesrObj|
   User.create!(uesrObj)
 end
+
+puts 'creating restaurants'
+restaurants.each do |restaurant|
+  Restaurant.create!(
+    name: restaurant['name'],
+    url: restaurant['url'],
+    image_url: restaurant['image_url'],
+    location: restaurant['location']['address1'],
+    rating: restaurant['rating'],
+    coordinates: restaurant['coordinates'].to_s,
+    photos: '',
+    phone: restaurant['display_phone'],
+  )
+end
+
+
+
+puts 'creating reviews'
+Review.create!(
+  user_id: 1,
+  restaurant_id: 1,
+  rating: 5,
+  text: "Wow talk about amazing service",
+)
