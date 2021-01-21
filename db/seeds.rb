@@ -12,19 +12,19 @@ Review.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-puts 'creating Restaurants'
-10.times do
-  Restaurant.create!(
-    name: Faker::Restaurant.unique.name,
-    "url": '',
-    "image_url": Faker::Avatar.image,
-    "location": Faker::Address.street_address,
-    "rating": '',
-    "coordinates": '',
-    "photos": '',
-    "phone": Faker::PhoneNumber.cell_phone
-  )
-end
+# puts 'creating Restaurants'
+# 10.times do
+#   Restaurant.create!(
+#     name: Faker::Restaurant.unique.name,
+#     "url": '',
+#     "image_url": Faker::Avatar.image,
+#     "location": Faker::Address.street_address,
+#     "rating": '',
+#     "coordinates": '',
+#     "photos": '',
+#     "phone": Faker::PhoneNumber.cell_phone
+#   )
+# end
 
 
 
