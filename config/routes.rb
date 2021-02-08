@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    resources :favorites, only: [:index, :show, :destroy]
+    resources :favorites
     resources :reviews
     resources :restaurants, only: [:index, :show]
     resources :users
