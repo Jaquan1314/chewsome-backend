@@ -35,7 +35,7 @@ class Api::UsersController < ApplicationController
     if (user && user.authenticate(params[:password]))
       render json: user
     else
-      render json: {errors: "invalid email"}
+      render json: {errors: "invalid email or password"}
     end
   end
 
